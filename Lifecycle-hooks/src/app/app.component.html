@@ -1,1 +1,9 @@
 <p>Hooks</p>
+<input type="text" (blur)="handleData($event)" />
+<h3>Simple Form</h3>
+<p>Product Name : <input type="text" [(ngModel)]="nameUI" /></p>
+<p>Product Price : <input type="number" [(ngModel)]="priceUI" /></p>
+<button (click)="updateProduct($event)">updateProduct</button>
+<app-hooks-child [parentData]="data" [parentProduct]="product">
+  <h1 #child>This is Parent content on child</h1>
+</app-hooks-child>
