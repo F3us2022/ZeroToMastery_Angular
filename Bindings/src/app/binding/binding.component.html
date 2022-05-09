@@ -1,0 +1,96 @@
+<!-- DATA BINDING -->
+
+<!-- <p>Child Component</p>
+<p>{{ pageTitle }}</p>
+<p>Image Using Property Binding</p>
+<img [src]="imgUrl" alt="coffee" />
+<p>Image using Interpolation</p>
+<img src="{{ imgUrl }}" alt="" />
+<br />
+<button [disabled]="btnStatus">Property Binging</button>
+<br />
+<br />
+<button disabled="{{ btnStatus }}">Interpolation</button>
+<br />
+<br />
+<button (click)="changeTitle()">Change Title</button>
+<br />
+<br />
+<p>Two Way Binding</p>
+<input type="text" [(ngModel)]="username" />
+<p>{{ username }}</p> -->
+
+<!-- BOOTSTRAPING -->
+<!-- <p>
+  <button
+    type="button"
+    class="btn btn-outline-primary"
+    (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample"
+  >
+    Toggle
+  </button>
+</p>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+  <div class="card">
+    <div class="card-body">You can collapse this card by clicking Toggle</div>
+  </div>
+</div> -->
+
+<!----------------------------------------------------- DIRECTIVES ---------------------------------------------------->
+
+<!------------------------------------ NgFor -->
+
+<!-- <ul>
+  <li *ngFor="let value of arrData">{{ value }}</li>
+</ul>
+
+<table class="table table-striped">
+  <tr class="thead-dark">
+    <th>No</th>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>CITY</th>
+  </tr>
+  <tr *ngFor="let value of objData; let i = index">
+    <td>{{ i }}</td>
+    <td>{{ value.id }}</td>
+    <td>{{ value.name }}</td>
+    <td>{{ value.city }}</td>
+  </tr>
+</table> -->
+
+<!--------------------------------------- NgIf -->
+
+<!-- <p *ngIf="isLoggedIn; else notLogged">Hello! You are logged In.</p>
+<ng-template #notLogged>
+  <p>You Are yet not logged In</p>
+</ng-template> -->
+
+<!------------------------------------ NgSwitch -->
+<h2>SELECT COUNTRY</h2>
+<select name="country" (change)="choice($event)">
+  <option>Select Country</option>
+  <option *ngFor="let c of countries" [value]="c.code">
+    {{ c.country }}
+  </option>
+</select>
+
+<div [ngSwitch]="countrySelected">
+  <div *ngSwitchCase="'IN'">
+    <h1>India STD Code is +91</h1>
+  </div>
+  <div *ngSwitchCase="'CA'">
+    <h1>Canada STD Code is +1</h1>
+  </div>
+  <div *ngSwitchCase="'UK'">
+    <h1>Britain STD Code is +44</h1>
+  </div>
+  <div *ngSwitchCase="'IR'">
+    <h1>Ireland STD Code is +353</h1>
+  </div>
+  <div *ngSwitchDefault>
+    <h1>Select your Country!</h1>
+  </div>
+</div>
