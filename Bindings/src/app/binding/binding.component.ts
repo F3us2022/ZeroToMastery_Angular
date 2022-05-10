@@ -96,12 +96,29 @@ export class BindingComponent implements OnInit {
   // }
   //--------------------------------------------- HTTP SERVICES ----------------------------------------------------->
 
+  // users: any;
+  // constructor(private userData: HttpServiceService) {}
+  // ngOnInit(): void {
+  //   this.userData.exportUserData().subscribe((data) => {
+  //     this.users = data;
+  //     console.log(this.users[0].address.city);
+  //   });
+  // }
+
+  //---------------------------------------- HTTP SERVICES - TRY/CATCH --------------------------------------------->
+
   users: any;
+  errorMessage!: string;
   constructor(private userData: HttpServiceService) {}
   ngOnInit(): void {
-    this.userData.exportUserData().subscribe((data) => {
-      this.users = data;
-      console.log(this.users[0].address.city);
-    });
+    this.userData.exportUserData().subscribe(
+      (data: any) => {
+        this.users = data;
+        console.log(this.users[0].address.city);
+      },
+      (err: string) => {
+        this.errorMessage = err;
+      }
+    );
   }
 }
