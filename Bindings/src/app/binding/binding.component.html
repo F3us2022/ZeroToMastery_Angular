@@ -69,7 +69,7 @@
 </ng-template> -->
 
 <!------------------------------------ NgSwitch -->
-<h2>SELECT COUNTRY</h2>
+<!-- <h2>SELECT COUNTRY</h2>
 <select name="country" (change)="choice($event)">
   <option>Select Country</option>
   <option *ngFor="let c of countries" [value]="c.code">
@@ -93,4 +93,50 @@
   <div *ngSwitchDefault>
     <h1>Select your Country!</h1>
   </div>
-</div>
+</div> -->
+
+<!----------------------------------------- PARENT TO CHILD COMMUNICATION ------------------------------------------->
+
+<!-- <h2>{{ uname }}</h2> -->
+
+<!----------------------------------------- CHILD TO PARENT COMMUNICATION ------------------------------------------->
+
+<!-- <button (click)="btnClicked()">Child Button</button> -->
+
+<!--------------------------------------------- PIPES (BUILT IN PIPES) ----------------------------------------------->
+<!-- <table class="table">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>CITY</th>
+    <th>SALARY</th>
+    <th>DATE OF BIRTH</th>
+  </tr>
+  <tr *ngFor="let data of userData">
+    <td>{{ data.id }}</td>
+    <td>{{ data.name | uppercase }}</td>
+    <td>{{ data.city | titlecase }}</td>
+    <td>{{ data.salary | currency: "CAD":"symbol":"4.2-2" }}</td>
+    <td>{{ data.dob | date: "dd/MM/yyyy" }}</td>
+  </tr>
+</table> -->
+
+<!--------------------------------------------- PIPES (CUSTOM IN PIPES) ----------------------------------------------->
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>CITY</th>
+    <th>SALARY</th>
+    <th>DATE OF BIRTH</th>
+    <th>AGE</th>
+  </tr>
+  <tr *ngFor="let data of userData">
+    <td>{{ data.id }}</td>
+    <td>{{ data.name | uppercase }}</td>
+    <td>{{ data.city | titlecase }}</td>
+    <td>{{ data.salary | currency: "CAD":"symbol":"4.2-2" }}</td>
+    <td>{{ data.dob | date: "dd/MM/yyyy" }}</td>
+    <td>{{ data.dob | age }}</td>
+  </tr>
+</table>
