@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Rout-Guard'`, () => {
+  it(`should have as title 'Bindings'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Rout-Guard');
+    expect(app.title).toEqual('Bindings');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Rout-Guard app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Bindings app is running!');
   });
 });
