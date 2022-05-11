@@ -109,9 +109,9 @@ export class BindingComponent implements OnInit {
 
   users: any;
   errorMessage!: string;
-  constructor(private userData: HttpServiceService) {}
+  constructor(private allUserData: HttpServiceService) {}
   ngOnInit(): void {
-    this.userData.exportUserData().subscribe(
+    this.allUserData.exportUserData().subscribe(
       (data: any) => {
         this.users = data;
         console.log(this.users[0].address.city);

@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+  <tr>
+    <th>USERNAME</th>
+    <td>{{ userData.username }}</td>
+  </tr>
+  <tr>
+    <th>NAME</th>
+    <td>{{ userData.name }}</td>
+  </tr>
+  <tr>
+    <th>EMAIL</th>
+    <td>{{ userData.email }}</td>
+  </tr>
+  <tr>
+    <th>ADDRESS</th>
+    <td>{{ userData.address.street }},{{ userData.address.city }}</td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+  </tr>
+</table>
+<div class="nav nav-tabs">
+  <a class="nav-item nav-link active" routerLink="/address">Address</a>
+  <a class="nav-item nav-link" routerLink="/company">Company</a>
+  <router-outlet></router-outlet>
+</div>

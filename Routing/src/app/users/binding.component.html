@@ -178,7 +178,9 @@
 
   <tbody>
     <tr *ngFor="let data of users">
-      <td>{{ data.id }}</td>
+      <td>
+        <a [routerLink]="['/userDetail', data.id]">{{ data.id }}</a>
+      </td>
       <td>{{ data.name | uppercase }}</td>
       <td>{{ data.address.city | titlecase }}</td>
       <td>{{ data.company.name | uppercase }}</td>
