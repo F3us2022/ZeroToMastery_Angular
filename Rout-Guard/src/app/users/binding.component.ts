@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpServiceService } from '../services/http-service.service';
 import { UsersService } from '../services/users.service';
 
@@ -109,16 +110,11 @@ export class BindingComponent implements OnInit {
 
   users: any;
   errorMessage!: string;
-  constructor(private allUserData: HttpServiceService) {}
+  constructor(
+    private allUserData: HttpServiceService,
+    private activateRoute: ActivatedRoute
+  ) {}
   ngOnInit(): void {
-    this.allUserData.exportUserData().subscribe(
-      (data: any) => {
-        this.users = data;
-        console.log(this.users[0].address.city);
-      },
-      (err: string) => {
-        this.errorMessage = err;
-      }
-    );
+    this.users = this.activateRoute.snapshot.data['data'];
   }
 }

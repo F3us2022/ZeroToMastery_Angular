@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpServiceService } from '../services/http-service.service';
+import { AddressComponent } from '../address/address.component';
 
 @Component({
   selector: 'app-user-detail',

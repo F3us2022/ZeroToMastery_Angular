@@ -14,22 +14,35 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { HomeComponent } from './home/home.component';
 import { AddressComponent } from './address/address.component';
 import { CompanyComponent } from './company/company.component';
+import { HttpServiceService } from './services/http-service.service';
+import { AuthUserService } from './services/auth-user.service';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { AddUserComponent } from './add-user/add-user.component';
+import { ResolveGuard } from './guards/resolve.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'users', component: BindingComponent },
+  {
+    path: 'users',
+    component: BindingComponent,
+    canActivate: [AuthGuard],
+    resolve: { data: ResolveGuard },
+  },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   {
     path: 'userDetail/:id',
     component: UserDetailComponent,
+    canActivateChild: [AdminGuard],
     children: [
-      { path: '', redirectTo: 'address', pathMatch: 'full' },
+      // { path: '', redirectTo: 'address', pathMatch: 'full' },
       { path: 'address', component: AddressComponent },
       { path: 'company', component: CompanyComponent },
     ],
   },
+  { path: 'addUser', component: AddUserComponent },
   { path: '**', redirectTo: 'home' },
 ];
 
@@ -44,6 +57,7 @@ const routes: Routes = [
     HomeComponent,
     AddressComponent,
     CompanyComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +66,14 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [UsersService],
+  providers: [
+    UsersService,
+    HttpServiceService,
+    AuthUserService,
+    AuthGuard,
+    AdminGuard,
+    ResolveGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
