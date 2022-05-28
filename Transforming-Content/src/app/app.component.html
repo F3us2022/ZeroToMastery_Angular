@@ -23,3 +23,16 @@ a- https://angular.io/api?type=directive -->
 
 <hr />
 <button [ngStyle]="{ 'font-size.rem': fontSize }">ngStyle</button>
+
+<!--**************** ngIf ******************-->
+
+<p *ngIf="blueClass; else elsePart">button is clickd Now (*ngIf Activated)</p>
+<ng-template #elsePart>
+  <p>Button is not clicked yet!</p>
+</ng-template>
+
+<!--**************** ngFor ******************-->
+
+<p *ngFor="let con of Countries">
+  {{ con.code }}
+</p>

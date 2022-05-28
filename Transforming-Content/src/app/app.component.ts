@@ -13,4 +13,11 @@ export class AppComponent {
   numPipe = 23.44;
   blueClass = false;
   fontSize = 3;
+
+  Countries: any[] = [
+    { code: 'IN', country: 'India' },
+    { code: 'CA', country: 'Canada' },
+    { code: 'UK', country: 'Britain' },
+    { code: 'IR', country: 'Ireland' },
+  ];
 }
