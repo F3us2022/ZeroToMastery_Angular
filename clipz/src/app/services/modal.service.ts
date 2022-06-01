@@ -19,6 +19,10 @@ export class ModalService {
     });
   }
 
+  unregister(id: string) {
+    this.modals = this.modals.filter((ele) => ele.id !== id);
+  }
+
   isModalOpen(id: string) {
     const val = this.modals.find((ele) => {
       ele.id === id;
