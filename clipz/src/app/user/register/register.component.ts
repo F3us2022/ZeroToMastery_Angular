@@ -27,8 +27,8 @@ export class RegisterComponent {
   confirm_password = new UntypedFormControl('', [Validators.required]);
   phoneNumber = new UntypedFormControl('', [
     Validators.required,
-    Validators.min(13),
-    Validators.max(13),
+    Validators.minLength(10),
+    Validators.maxLength(10),
   ]);
 
   registerForm = new UntypedFormGroup({
@@ -39,4 +39,8 @@ export class RegisterComponent {
     confirm_password: this.confirm_password,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    console.log('form submitted');
+  }
 }
