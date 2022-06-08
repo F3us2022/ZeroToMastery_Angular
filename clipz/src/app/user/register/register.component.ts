@@ -40,7 +40,13 @@ export class RegisterComponent {
     phoneNumber: this.phoneNumber,
   });
 
+  showAlert = false;
+  alertMsg = 'Please wait! Your account is getting created.';
+  alertColor = 'blue';
+
   register() {
-    console.log('form submitted');
+    this.showAlert = true;
+    this.alertMsg = 'Please wait! Your account is getting created.';
+    this.alertColor = 'blue';
   }
 }
