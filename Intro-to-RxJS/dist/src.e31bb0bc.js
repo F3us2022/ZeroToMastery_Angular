@@ -11176,13 +11176,26 @@ var _zipWith = require("./internal/operators/zipWith");
 var _rxjs = require("rxjs");
 
 //Observable Example
+// import { Observable } from 'rxjs';
+// const obs = new Observable((subscriber) => {
+//     subscriber.next('Data Stream One');
+//     subscriber.next('Data Stream two');
+//     subscriber.complete();
+//     subscriber.next('Data Stream Three');
+//     subscriber.error('test error');
+//  });
+// obs.subscribe({
+//     next: (value) => {
+//         console.log(value)
+//     },
+//     complete: () => { console.log('complete called') },
+//     error: (err)=>{console.log(err)}
+// })
+//Observable Example
 var obs = new _rxjs.Observable(function (subscriber) {
-  subscriber.next('Data Stream One');
-  subscriber.next('Data Stream two');
-  subscriber.complete();
-  subscriber.next('Data Stream Three');
-  subscriber.error('test error');
+  subscriber.next('observer');
 });
+console.log('Before Subscribing');
 obs.subscribe({
   next: function next(value) {
     console.log(value);
@@ -11194,6 +11207,7 @@ obs.subscribe({
     console.log(err);
   }
 });
+console.log('After Subscribing');
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11222,7 +11236,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51286" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
