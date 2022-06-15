@@ -244,14 +244,22 @@ console.log('After');
 
 //
 
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+// import { of } from 'rxjs';
+// import { map } from 'rxjs/operators';
 
-const obs = of(1, 2, 3, 4, 5).pipe(
-    map((value)=>`$${value}`)
-)
+// const obs = of(1, 2, 3, 4, 5).pipe(
+//     map((value)=>`$${value}`)
+// )
 
-const subs = obs.subscribe({
-    next(value) { console.log(value) },
-    complete() { console.log('complete')}
-})
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+
+
+//
+
+//--------------------------------------------------- PLUCK OPERATORS----------------------------------------------
+
+//
+
