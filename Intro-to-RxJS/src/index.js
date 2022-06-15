@@ -189,3 +189,50 @@ console.log('After');
 // );
 
 // const subscriber = obs.subscribe(console.log);
+
+//
+
+//--------------------------------------------------- Of and From OPERATORS----------------------------------------------
+
+//
+
+//---------------------- OF Operator ------------------
+
+import { of ,from} from 'rxjs'
+
+//const obs = of(1, 2, 3, 4, 5);   
+//const obs = of([1, 2, 3, 4, 5]);   //cant show array elements individually
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value)},
+//     complete() { console.log('complete')}
+// })
+
+//---- OF retruns PROMISE
+
+// const obs = of(fetch('https://jsonplaceholder.typicode.com/todos/1'));   //cant show array elements individually
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value)},
+//     complete() { console.log('complete')}
+// })
+
+//
+//---------------------- FOR Operator
+//
+
+// const obsFor = from([1, 2, 3, 4, 5]);   //cant show array elements individually
+
+// const subsFor = obsFor.subscribe({
+//     next(value) { console.log(value)},
+//     complete() { console.log('complete')}
+// })
+
+//------ FROM returns values
+
+// const obsFor = from(fetch('https://jsonplaceholder.typicode.com/todos/1'));   //cant show array elements individually
+
+// const subsFor = obsFor.subscribe({
+//     next(value) { console.log(value)},
+//     complete() { console.log('complete')}
+// })
