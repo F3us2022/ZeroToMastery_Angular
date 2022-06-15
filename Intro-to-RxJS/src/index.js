@@ -122,3 +122,28 @@ obs.subscribe({
 console.log('After');
 
 */
+
+//
+
+//------------------------------------- ASynchronous Observable (UNSUBSCRIBE)-------------------------------------------
+
+const obs = new Observable((subscriber) => {
+    const id = setInterval(() => {
+        subscriber.next('text')
+    console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
+
+    return ()=>{ 
+        clearInterval(id);
+    }
+ });
+
+
+const subscriber = obs.subscribe({
+    next: (value) => {
+        console.log(value)
+    },
+    complete: () => { console.log('complete called') },
+    error: (err)=>{console.log(err)}
+})
+
+setTimeout(() => {subscriber.unsubscribe()},4000)

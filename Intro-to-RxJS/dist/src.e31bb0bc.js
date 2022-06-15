@@ -11174,6 +11174,136 @@ var _zipWith = require("./internal/operators/zipWith");
 "use strict";
 
 var _rxjs = require("rxjs");
+
+//Observable Example
+// import { Observable } from 'rxjs';
+// const obs = new Observable((subscriber) => {
+//     subscriber.next('Data Stream One');
+//     subscriber.next('Data Stream two');
+//     subscriber.complete();
+//     subscriber.next('Data Stream Three');
+//     subscriber.error('test error');
+//  });
+// obs.subscribe({
+//     next: (value) => {
+//         console.log(value)
+//     },
+//     complete: () => { console.log('complete called') },
+//     error: (err)=>{console.log(err)}
+// })
+//Observable Example
+// const obs = new Observable((subscriber) => {
+//     subscriber.next('Data Stream One');
+//     subscriber.next('Data Stream two');
+//     subscriber.complete();
+//     subscriber.next('Data Stream Three');
+//     subscriber.error('test error');
+//  });
+// obs.subscribe({
+//     next: (value) => {
+//         console.log(value)
+//     },
+//     complete: () => { console.log('complete called') },
+//     error: (err)=>{console.log(err)}
+// })
+//----------------------------------------- Synchronous Observable ----------------------------------------------------
+
+/*
+
+const obs = new Observable((subscriber) => {
+    subscriber.next('observer');
+})
+
+console.log('Before Subscribing');
+
+console.log('Before');
+
+obs.subscribe({
+    next: (value) => {
+        console.log(value)
+    },
+    complete: () => { console.log('complete called') },
+    error: (err)=>{console.log(err)}
+})
+
+
+console.log('After');
+
+*/
+//
+//
+//----------------------------------------- ASynchronous Observable ----------------------------------------------------
+//
+//With memory leak
+// const obs = new Observable((subscriber) => {
+//     setInterval(() => {
+//         subscriber.next('text')
+//     console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
+//     subscriber.complete();
+//  });
+// console.log('Before');
+// obs.subscribe({
+//     next: (value) => {
+//         console.log(value)
+//     },
+//     complete: () => { console.log('complete called') },
+//     error: (err)=>{console.log(err)}
+// })
+// console.log('After');
+//----------------******************* Without memory leak ********************---------------------
+
+/*
+
+const obs = new Observable((subscriber) => {
+    const id = setInterval(() => {
+        subscriber.next('text')
+    console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
+    subscriber.complete();
+
+    return ()=>{ 
+        clearInterval(id);
+    }
+ });
+
+console.log('Before');
+
+obs.subscribe({
+    next: (value) => {
+        console.log(value)
+    },
+    complete: () => { console.log('complete called') },
+    error: (err)=>{console.log(err)}
+})
+
+console.log('After');
+
+*/
+//
+//------------------------------------- ASynchronous Observable (UNSUBSCRIBE)-------------------------------------------
+var obs = new _rxjs.Observable(function (subscriber) {
+  var id = setInterval(function () {
+    subscriber.next('text');
+    console.log("memory leak even after 'subscriber.complete' is called");
+  }, 1000); //memory leak
+
+  return function () {
+    clearInterval(id);
+  };
+});
+var subscriber = obs.subscribe({
+  next: function next(value) {
+    console.log(value);
+  },
+  complete: function complete() {
+    console.log('complete called');
+  },
+  error: function error(err) {
+    console.log(err);
+  }
+});
+setTimeout(function () {
+  subscriber.unsubscribe();
+}, 4000);
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
