@@ -59,9 +59,6 @@ obs.subscribe({
     error: (err)=>{console.log(err)}
 })
 
-<<<<<<< HEAD
-console.log('After Subscribing');
-=======
 
 console.log('After');
 
@@ -91,4 +88,3 @@ obs.subscribe({
     error: (err)=>{console.log(err)}
 })
 
->>>>>>> 81d7070a12fc385c339cf3106bf03d836c095247
