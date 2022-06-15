@@ -198,7 +198,7 @@ console.log('After');
 
 //---------------------- OF Operator ------------------
 
-import { of ,from} from 'rxjs'
+//import { of ,from} from 'rxjs'
 
 //const obs = of(1, 2, 3, 4, 5);   
 //const obs = of([1, 2, 3, 4, 5]);   //cant show array elements individually
@@ -236,3 +236,22 @@ import { of ,from} from 'rxjs'
 //     next(value) { console.log(value)},
 //     complete() { console.log('complete')}
 // })
+
+
+//
+
+//--------------------------------------------------- MAP OPERATORS----------------------------------------------
+
+//
+
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const obs = of(1, 2, 3, 4, 5).pipe(
+    map((value)=>`$${value}`)
+)
+
+const subs = obs.subscribe({
+    next(value) { console.log(value) },
+    complete() { console.log('complete')}
+})
