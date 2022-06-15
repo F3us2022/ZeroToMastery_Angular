@@ -11211,12 +11211,10 @@ var _rxjs = require("rxjs");
 /*
 
 const obs = new Observable((subscriber) => {
-    subscriber.next('Data Stream One');
-    subscriber.next('Data Stream two');
-    subscriber.complete();
-    subscriber.next('Data Stream Three');
-    subscriber.error('test error');
- });
+    subscriber.next('observer');
+})
+
+console.log('Before Subscribing');
 
 console.log('Before');
 
