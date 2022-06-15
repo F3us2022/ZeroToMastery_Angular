@@ -75,9 +75,38 @@ console.log('After');
 
 //
 
+//With memory leak
+
+// const obs = new Observable((subscriber) => {
+//     setInterval(() => {
+//         subscriber.next('text')
+//     console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
+//     subscriber.complete();
+//  });
+
+// console.log('Before');
+
+// obs.subscribe({
+//     next: (value) => {
+//         console.log(value)
+//     },
+//     complete: () => { console.log('complete called') },
+//     error: (err)=>{console.log(err)}
+// })
+
+// console.log('After');
+
+//----------------******************* Without memory leak ********************---------------------
 
 const obs = new Observable((subscriber) => {
-    
+    const id = setInterval(() => {
+        subscriber.next('text')
+    console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
+    subscriber.complete();
+
+    return ()=>{ 
+        clearInterval(id);
+    }
  });
 
 console.log('Before');
@@ -90,3 +119,4 @@ obs.subscribe({
     error: (err)=>{console.log(err)}
 })
 
+console.log('After');
