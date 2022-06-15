@@ -96,6 +96,8 @@ console.log('After');
 
 //----------------******************* Without memory leak ********************---------------------
 
+/*
+
 const obs = new Observable((subscriber) => {
     const id = setInterval(() => {
         subscriber.next('text')
@@ -118,3 +120,5 @@ obs.subscribe({
 })
 
 console.log('After');
+
+*/
