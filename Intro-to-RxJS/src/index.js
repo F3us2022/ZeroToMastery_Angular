@@ -297,9 +297,140 @@ console.log('After');
 
 //
 
-//--------------------------------------------------- PLUCK OPERATORS----------------------------------------------
+//--------------------------------------------------- FILTER OPERATORS----------------------------------------------
 
 
 //
 
 //
+
+// import { fromEvent, observable } from 'rxjs';
+// import { map, pluck,filter} from 'rxjs/operators'
+
+// const obs = fromEvent(
+//     document,'keydown'
+// ).pipe(
+//     pluck('code'),
+//     filter(value => value==='Space' )
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+
+//
+
+//
+
+//--------------------------------------------------- REDUCE OPERATORS----------------------------------------------
+
+
+//
+
+//
+
+// import { from, of } from 'rxjs'
+// import { pipe, reduce } from 'rxjs/operators'
+
+// const obs = of(1, 2, 3, 4, 5).pipe(
+//     reduce((acc, val) => { return acc + val },0)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+//
+
+//
+
+//--------------------------------------------------- TAKE and SCAN OPERATORS----------------------------------------------
+
+
+//
+
+//
+
+//----- Using TAKE operator with REDUCE
+
+// import { interval } from 'rxjs'
+// import { pipe, reduce , take} from 'rxjs/operators'
+
+// const obs = interval(500).pipe(
+//     take(5),
+//     reduce((acc, val) => { return acc + val },0)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+//
+
+//----- Using TAKE operator with SCAN
+
+// import { interval } from 'rxjs'
+// import { pipe, scan,take } from 'rxjs/operators'
+
+// const obs = interval(500).pipe(
+//     take(6),
+//     scan((acc, val) => { return acc + val },0)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+//
+
+//
+
+//--------------------------------------------------- TAP OPERATORS----------------------------------------------
+
+
+//
+
+//
+
+// import { interval } from 'rxjs'
+// import { pipe, reduce,take,tap } from 'rxjs/operators'
+
+// const obs = interval(500).pipe(
+//     take(6),
+//     tap(console.log),
+//     reduce((acc, val) => { return acc + val },0)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+//
+
+//
+
+//--------------------------------------------------- Understanding FLATTENING OPERATORS----------------------------------------------
+
+
+//
+
+//
+
+import { fromEvent } from 'rxjs'
+import { map,pipe } from 'rxjs/operators'
+import { ajax} from 'rxjs/ajax'
+
+const button = document.querySelectorAll('#btn');
+const obs = fromEvent(button, 'click').pipe(
+    map(()=>{return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1')})
+)
+
+const subs = obs.subscribe({
+    next(value) { value.subscribe(console.log) },
+    complete() { console.log('complete')}
+});
