@@ -5,14 +5,14 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AuthService) {}
   inSubmission = false;
   name = new UntypedFormControl('', [
     Validators.required,
@@ -54,14 +54,8 @@ export class RegisterComponent {
     this.alertColor = 'blue';
     this.inSubmission = true;
 
-    const { email, password } = this.registerForm.value;
-
     try {
-      const userCred = await this.auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      console.log(userCred);
+      await this.auth.creatUser(this.registerForm.value);
     } catch (e) {
       console.log(e);
       this.alertMsg = 'An unexpected error occured. Please try again later!';
