@@ -131,7 +131,7 @@ console.log('After');
 //         subscriber.next('text')
 //     console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
 
-//     return ()=>{ 
+//     return ()=>{
 //         clearInterval(id);
 //     }
 //  });
@@ -200,7 +200,7 @@ console.log('After');
 
 //import { of ,from} from 'rxjs'
 
-//const obs = of(1, 2, 3, 4, 5);   
+//const obs = of(1, 2, 3, 4, 5);
 //const obs = of([1, 2, 3, 4, 5]);   //cant show array elements individually
 
 // const subs = obs.subscribe({
@@ -263,3 +263,43 @@ console.log('After');
 
 //
 
+// import { fromEvent, observable } from 'rxjs';
+// import { map} from 'rxjs/operators'
+
+// const obs = fromEvent(
+//     document,'keydown'
+// ).pipe(
+//     map(event=>event.code)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+
+//------- Using Pluck Operator
+
+// import { fromEvent, observable } from 'rxjs';
+// import { map, pluck} from 'rxjs/operators'
+
+// const obs = fromEvent(
+//     document,'keydown'
+// ).pipe(
+//     pluck('code')
+// )
+
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+
+//
+
+//
+
+//--------------------------------------------------- PLUCK OPERATORS----------------------------------------------
+
+
+//
+
+//

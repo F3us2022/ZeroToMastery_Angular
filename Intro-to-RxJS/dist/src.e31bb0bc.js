@@ -227,7 +227,7 @@ console.log('After');
 //     const id = setInterval(() => {
 //         subscriber.next('text')
 //     console.log(`memory leak even after 'subscriber.complete' is called`)}, 1000) //memory leak
-//     return ()=>{ 
+//     return ()=>{
 //         clearInterval(id);
 //     }
 //  });
@@ -266,7 +266,7 @@ console.log('After');
 //
 //---------------------- OF Operator ------------------
 //import { of ,from} from 'rxjs'
-//const obs = of(1, 2, 3, 4, 5);   
+//const obs = of(1, 2, 3, 4, 5);
 //const obs = of([1, 2, 3, 4, 5]);   //cant show array elements individually
 // const subs = obs.subscribe({
 //     next(value) { console.log(value)},
@@ -307,6 +307,34 @@ console.log('After');
 //
 //--------------------------------------------------- PLUCK OPERATORS----------------------------------------------
 //
+// import { fromEvent, observable } from 'rxjs';
+// import { map} from 'rxjs/operators'
+// const obs = fromEvent(
+//     document,'keydown'
+// ).pipe(
+//     map(event=>event.code)
+// )
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+//------- Using Pluck Operator
+// import { fromEvent, observable } from 'rxjs';
+// import { map, pluck} from 'rxjs/operators'
+// const obs = fromEvent(
+//     document,'keydown'
+// ).pipe(
+//     pluck('code')
+// )
+// const subs = obs.subscribe({
+//     next(value) { console.log(value) },
+//     complete() { console.log('complete')}
+// })
+//
+//
+//--------------------------------------------------- PLUCK OPERATORS----------------------------------------------
+//
+//
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -335,7 +363,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63235" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55903" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
