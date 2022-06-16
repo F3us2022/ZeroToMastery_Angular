@@ -421,16 +421,178 @@ console.log('After');
 
 //
 
-import { fromEvent } from 'rxjs'
-import { map,pipe } from 'rxjs/operators'
-import { ajax} from 'rxjs/ajax'
+// import { fromEvent } from 'rxjs'
+// import { map,pipe } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
 
-const button = document.querySelectorAll('#btn');
-const obs = fromEvent(button, 'click').pipe(
-    map(()=>{return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1')})
-)
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     map(()=>{return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1')})
+// )
 
-const subs = obs.subscribe({
-    next(value) { value.subscribe(console.log) },
-    complete() { console.log('complete')}
-});
+// const subs = obs.subscribe({
+//     next(value) { value.subscribe(console.log) },
+//     complete() { console.log('complete')}
+// });
+
+
+//
+
+//
+
+//----------------------------------------------------------- MERGE MAP OPERATORS-----------------------------------------------------
+
+
+//
+
+//
+
+//------------ Getting the value directly from observer ------------------------
+
+// import { fromEvent } from 'rxjs'
+// import { map,pipe,mergeMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     mergeMap(()=>{return ajax.getJSON('https://jsonplaceholder.typicode.com/todos/1')})
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+
+//------------ Memory leak which occurs when we use mergeMap --------
+
+// import { fromEvent, interval } from 'rxjs'
+// import { map,pipe,mergeMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     mergeMap(()=>{return interval(1000)})
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+//
+
+//--------------------------------------
+//Correcting the memory leak which occurs when we use mergeMap using TAKE operator but locking both outer and inner observable due to which again clicking of button doesnt emmit value
+//--------------------------------------
+
+// import { fromEvent, interval } from 'rxjs'
+// import { map,pipe,mergeMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     mergeMap(() => {
+//         return interval(1000).pipe(
+//         tap(console.log)
+//     ) }),
+//     take(5)
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+
+//
+
+//--------------------------------------
+//Correcting the memory leak which occurs when we use mergeMap using TAKE operator but will lock only inner observable due to which again clicking of button will emmit value
+//--------------------------------------
+
+
+// import { fromEvent, interval } from 'rxjs'
+// import { map,pipe,mergeMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     mergeMap(() => {
+//         return interval(1000).pipe(
+//             tap(console.log),
+//                 take(5)
+//     ) }),
+
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+
+//
+
+//
+
+//----------------------------------------------------------- SWITCH MAP OPERATORS-----------------------------------------------------
+
+
+//
+
+//
+
+// import { fromEvent, interval } from 'rxjs'
+// import { map,pipe,switchMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     switchMap(() => {
+//         return interval(1000).pipe(
+//             take(5),
+//             tap({ complete(){console.log(`inner observable complted?`)}
+// }),
+               
+//     ) }),
+
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
+
+
+//
+
+//
+
+//----------------------------------------------------------- EXHAUST MAP OPERATORS-----------------------------------------------------
+
+
+//
+
+//
+
+// import { fromEvent, interval } from 'rxjs'
+// import { map,pipe,exhaustMap,tap,take } from 'rxjs/operators'
+// import { ajax} from 'rxjs/ajax'
+
+// const button = document.querySelectorAll('#btn');
+// const obs = fromEvent(button, 'click').pipe(
+//     exhaustMap(() => {
+//         return interval(1000).pipe(
+//             take(5),
+//             tap({ complete(){console.log(`inner observable complted?`)}
+// }),
+               
+//     ) }),
+
+// )
+
+// const subs = obs.subscribe({
+//     next(value) {console.log(value) },
+//     complete() { console.log('complete')}
+// });
