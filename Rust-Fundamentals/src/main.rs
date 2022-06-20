@@ -166,29 +166,33 @@
 
 //------------------------------------------------------------------ RESULTS ----------------------------------------------------------------------
 
-struct BankAccount {
-    balance:i32,
-    verified:bool
-}
+// struct BankAccount {
+//     balance:i32,
+//     verified:bool
+// }
 
 
-fn is_verified(account:&BankAccount) -> Result<bool,bool>{
-    return match    account.verified {
-        true => Ok(true),
-        false => Err(false)
-    }
-}
+// fn is_verified(account:&BankAccount) -> Result<bool,bool>{
+//     return match    account.verified {
+//         true => Ok(true),
+//         false => Err(false)
+//     }
+// }
 
 
-fn main(){
+// fn main(){
 
-    let my_account = BankAccount{
-        balance:2000,
-        verified:false
-    };
+//     let my_account = BankAccount{
+//         balance:2000,
+//         verified:false
+//     };   
 
-    // let verification_status = is_verified(& my_account).unwrap();
-    let verification_status = is_verified(& my_account).expect("Unable to unwrap result!");
+//     // let verification_status = is_verified(& my_account).unwrap();
+//     let verification_status = is_verified(& my_account).expect("Unable to unwrap result!");
     
-    println!("{:?}",verification_status)
-}
+//     println!("{:?}",verification_status)
+// }
+
+//------------------------------------------------------------------ RESULTS ----------------------------------------------------------------------
+
+fn main(){}
